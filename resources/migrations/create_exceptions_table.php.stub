@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreateExceptionsTable extends Migration
 {
     /**
-     * Created by package 'Bug-Trap'
+     * Created by package 'BugTrap'
      * Run the migrations.
      */
     public function up()

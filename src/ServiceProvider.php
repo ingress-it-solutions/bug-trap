@@ -43,8 +43,8 @@ class ServiceProvider extends BaseServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/bugtrap.php', 'bugtrap');
 
-        $this->app->singleton(Bug-Trap::SERVICE, function ($app) {
-            return new Bug-Trap;
+        $this->app->singleton(BugTrap::SERVICE, function ($app) {
+            return new BugTrap;
         });
     }
 }

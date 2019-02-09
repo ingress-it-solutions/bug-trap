@@ -15,7 +15,7 @@ class BugTrap
     private $config = [];
 
     /**
-     * Bug-Trap constructor.
+     * BugTrap constructor.
      */
     public function __construct()
     {

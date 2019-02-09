@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Bug-Trap</title>
+        <title>BugTrap</title>
     </head>
     <body style="margin: 0px; padding: 0px;">
         <div style="padding: 10px; background-color: #55688A; color: white;">

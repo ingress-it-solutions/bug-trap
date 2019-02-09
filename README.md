@@ -2,7 +2,7 @@
     <a href="https://www.bugtrap.io" target="_blank"><img width="130" src="https://www.ingressit.com/images/icon128x121.png"></a>
 </p>
 
-# Bug-Trap
+# BugTrap
 
 Laravel 5 package for logging errors to bugtrap.io
 
@@ -21,7 +21,7 @@ You must install this service provider. Make this the very *first* provider in l
 // config/app.php
 'providers' => [
     // Make this very first provider
-    Bug-Trap\ServiceProvider::class,
+    BugTrap\ServiceProvider::class,
     
     //...
     //...
@@ -30,19 +30,19 @@ You must install this service provider. Make this the very *first* provider in l
 
 Then publish the config and migration file of the package using artisan.
 ```bash
-php artisan vendor:publish --provider="Bug-Trap\ServiceProvider"
+php artisan vendor:publish --provider="BugTrap\ServiceProvider"
 ```
 And adjust config file (`config/bugtrap.php`) with your desired settings.
 
 Add to your Exception Handler's (`/app/Exceptions/Handler.php` by default) `report` method these line and add the use line:
 ```php
-use Bug-Trap\Bug-Trap;
+use BugTrap\BugTrap;
 ...
 
 public function report(Exception $e)
 {
     if ($this->shouldReport($e)) {
-        (new Bug-Trap)->handle($e);
+        (new BugTrap)->handle($e);
     }
 
     return parent::report($e);
@@ -72,7 +72,7 @@ All you have to do is create a view (`500.blade.php`) that you return for your u
 Then in your `App\Exceptions\Handler.php` add the following code inside the `render` method:
 
 ```php
-if (($errorView = (new Bug-Trap)->errorView()) !== false) {
+if (($errorView = (new BugTrap)->errorView()) !== false) {
     return $errorView;
 }
 ```
@@ -93,7 +93,7 @@ public function render($request, Exception $exception)
 {
     ...
 
-    if (($errorView = (new Bug-Trap)->errorView()) !== false) {
+    if (($errorView = (new BugTrap)->errorView()) !== false) {
         return $errorView;
     }
 

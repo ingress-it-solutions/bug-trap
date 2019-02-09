@@ -15,7 +15,7 @@ return [
     'project_key' => env('BT_PROJECT_KEY'),
 
     /*
-     * Environments where Bug-Trap should report
+     * Environments where BugTrap should report
      */
     'environments' => [
         'production',
