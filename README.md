@@ -107,4 +107,4 @@ The bugtrap package is open source software licensed under the [license MIT](htt
 
 ## Contributors
 
-[Micheal Mand](https://github.com/mikemand) - https://github.com/Cannonb4ll/Bug-Trap/pull/2
+
