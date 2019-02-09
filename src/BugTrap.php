@@ -99,12 +99,12 @@ class BugTrap
     {
         $data = [];
 
-        $data['enviroment'] = env('APP_ENV');
+        $data['environment'] = env('APP_ENV');
         $data['host'] = Request::server('SERVER_NAME');
         $data['method'] = Request::method();
         $data['fullUrl'] = Request::fullUrl();
         $data['exception'] = $exception->getMessage();
-        $data['error'] = $exception->getTraceAsString();
+        $data['error'] = str_replace("#", "<br/>", $exception->getTraceAsString());
         $data['line'] = $exception->getLine();
         $data['file'] = $exception->getFile();
         $data['class'] = get_class($exception);
@@ -129,7 +129,7 @@ class BugTrap
             $data['exegutor'][] = $this->getLineInfo($lines, $data['line'], $i);
         }
         $data['exegutor'] = array_filter($data['exegutor']);
-
+        $data['exegutor'] = explode(',', $data['exegutor']);
         // to make symfony exception more readable
         if ($data['class'] == 'Symfony\Component\Debug\Exception\FatalErrorException') {
             preg_match("~^(.+)' in ~", $data['exception'], $matches);
