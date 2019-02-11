@@ -131,7 +131,7 @@ class BugTrap
             $data['exegutor'][] = $this->getLineInfo($lines, $data['line'], $i);
         }
         $data['exegutor'] = array_filter($data['exegutor']);
-        $data['exegutor'] = explode(',', $data['exegutor']);
+        
         // to make symfony exception more readable
         if ($data['class'] == 'Symfony\Component\Debug\Exception\FatalErrorException') {
             preg_match("~^(.+)' in ~", $data['exception'], $matches);
@@ -236,7 +236,7 @@ class BugTrap
         if($inputVariables){
             $logger->inputVariables($inputVariables);
         }
-        
+
         $logger->send();
     }
 
