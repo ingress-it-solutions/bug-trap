@@ -10,6 +10,8 @@ class Logger
     private $config = [];
     public $additionalData = [];
     public $exception;
+    public $inputVariables;
+    public $segmentVariables;
 
     public function __construct(array $exception = [])
     {
@@ -48,7 +50,7 @@ class Logger
         return $this;
     }
 
-    
+
     private function sendError()
     {
         $this->client->request('POST', base64_decode('aHR0cDovL3BhbHppbmJ1Zzo4ODg4L2FwaS9sb2c='), [
