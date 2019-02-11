@@ -104,7 +104,7 @@ class BugTrap
         $data['method'] = Request::method();
         $data['fullUrl'] = Request::fullUrl();
         $data['exception'] = $exception->getMessage();
-        $data['error'] = str_replace("#", "<br/>", $exception->getTraceAsString());
+        $data['error'] = $exception->getTraceAsString();
         $data['line'] = $exception->getLine();
         $data['file'] = $exception->getFile();
         $data['class'] = get_class($exception);
@@ -208,11 +208,10 @@ class BugTrap
         if (!array_key_exists($index, $lines)) {
             return;
         }
-        return [
-            'line' => '<span class="exception-currentline">' . $currentLine . '.</span> ' . SyntaxHighlight::process($lines[$index]),
-            'wrap_left' => $i ? '' : '<span class="exception-line">', // color: #F5F5F5; background-color: #5A3E3E; width: 100%; display: block;
-            'wrap_right' => $i ? '' : '</span>',
-        ];
+        return
+            '<span class="exception-currentline">' . $currentLine . '.</span> ' . SyntaxHighlight::process($lines[$index]) . '<br/>'
+
+        ;
     }
 
     /**
