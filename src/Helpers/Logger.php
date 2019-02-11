@@ -38,7 +38,7 @@ class Logger
     }
 
     public function inputVariables($inputVariables){
-        $this->inputVariables = implode(",", $inputVariables) . "<br/>";
+        $this->inputVariables = implode("<br/>", $inputVariables) . "<br/>";
 
        // $this->requestVariable = $requestVariable;
 
@@ -46,7 +46,7 @@ class Logger
     }
 
     public function segmentVariables($segmentVariables){
-        $this->segmentVariables = implode(",", $segmentVariables) . "<br/>";
+        $this->segmentVariables = implode("<br/>", $segmentVariables) . "<br/>";
         return $this;
     }
 
