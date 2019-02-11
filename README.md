@@ -12,7 +12,7 @@ Laravel 5 package for logging errors to bugtrap.io
 
 You can install the package through Composer.
 ```bash
-composer require bugtrap/bugtrap
+composer require ingress-it-solutions/bugtrap
 ```
 *In case of Laravel 5.5, you still need to manually register this as the service provider has to be the first provider that needs to be registered.*
 
@@ -39,10 +39,10 @@ Add to your Exception Handler's (`/app/Exceptions/Handler.php` by default) `repo
 use BugTrap\BugTrap;
 ...
 
-public function report(Exception $e)
+public function render(Exception $e, $request)
 {
     if ($this->shouldReport($e)) {
-        (new BugTrap)->handle($e);
+        (new BugTrap)->handle($e, $request);
     }
 
     return parent::report($e);
