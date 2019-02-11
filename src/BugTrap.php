@@ -26,9 +26,11 @@ class BugTrap
         $this->config['errorView'] = config('bugtrap.errorView', 'errors.500');
     }
 
-    public function handle($exception, array $additionalData = [])
+    public function handle($exception, $request, array $additionalData = [])
     {
         try {
+            $segmentVariables = $request->segments();
+            $inputsVariables = $request->input();
             $data = $this->getExceptionData($exception);
 
             /**
@@ -56,7 +58,7 @@ class BugTrap
             /*
              * Send to error
              */
-            $this->logError($data, $additionalData);
+            $this->logError($data, $segmentVariables, $inputsVariables, $additionalData);
 
             /*
              * If sleep has been enabled, add the new exception
@@ -219,7 +221,7 @@ class BugTrap
      * @param array $additionalData
      *
      */
-    private function logError($exception, array $additionalData = [])
+    private function logError($exception, $segmentVariables, $inputVariables, array $additionalData = [])
     {
         $logger = (new Logger($exception));
 
@@ -227,6 +229,14 @@ class BugTrap
             $logger->addAdditionalData($additionalData);
         }
 
+        if($segmentVariables){
+            $logger->segmentVariables($segmentVariables);
+        }
+
+        if($inputVariables){
+            $logger->inputVariables($inputVariables);
+        }
+        
         $logger->send();
     }
 

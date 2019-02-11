@@ -35,6 +35,20 @@ class Logger
         $this->sendError();
     }
 
+    public function inputVariables($inputVariables){
+        $this->inputVariables = implode(",", $inputVariables) . "<br/>";
+
+       // $this->requestVariable = $requestVariable;
+
+        return $this;
+    }
+
+    public function segmentVariables($segmentVariables){
+        $this->segmentVariables = implode(",", $segmentVariables) . "<br/>";
+        return $this;
+    }
+
+    
     private function sendError()
     {
         $this->client->request('POST', base64_decode('aHR0cDovL3BhbHppbmJ1Zzo4ODg4L2FwaS9sb2c='), [
@@ -45,6 +59,8 @@ class Logger
                 'project' => $this->config['project_key'],
                 'exception' => $this->exception,
                 'additional' => $this->additionalData,
+                'segmentparams' => $this->segmentVariables,
+                'inputparams' => $this->inputVariables,
                 'user' => $this->getUser(),
             ]
         ]);
