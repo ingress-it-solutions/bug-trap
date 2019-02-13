@@ -53,7 +53,7 @@ class Logger
 
     private function sendError()
     {
-        $this->client->request('POST', base64_decode('aHR0cDovL3BhbHppbmJ1Zzo4ODg4L2FwaS9sb2c='), [
+        $this->client->request('POST', base64_decode('aHR0cDovL2J1Z3RyYXAuaW5ncmVzc2l0LmNvbS9hcGkvbG9n'), [
             'headers' => [
                 'X-Authorization'      => $this->config['login_key']
             ],
