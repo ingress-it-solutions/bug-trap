@@ -211,9 +211,7 @@ class BugTrap
             return;
         }
         return
-            '<span class="exception-currentline">' . $currentLine . '.</span> ' . SyntaxHighlight::process($lines[$index]) . '<br/>'
-
-        ;
+            '<span class="exception-currentline">' . $currentLine . '.</span> ' . SyntaxHighlight::process($lines[$index]);
     }
 
     /**
