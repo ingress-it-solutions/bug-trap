@@ -21,6 +21,7 @@ class Logger
         $this->config['project_key'] = config('bugtrap.project_key', []);
         $this->config['queue_enabled'] = config('bugtrap.queue.enabled', false);
         $this->config['queue_name'] = config('bugtrap.queue.name', null);
+        $this->config['ultim8e_url'] = config('bugtrap.ultim8e_url', null);
 
         $this->exception = $exception;
     }
@@ -53,19 +54,21 @@ class Logger
 
     private function sendError()
     {
-        $this->client->request('POST', base64_decode('aHR0cDovL2J1Z3RyYXAuaW5ncmVzc2l0LmNvbS9hcGkvbG9n'), [
-            'headers' => [
-                'X-Authorization'      => $this->config['login_key']
-            ],
-            'form_params' => [
-                'project' => $this->config['project_key'],
-                'exception' => $this->exception,
-                'additional' => $this->additionalData,
-                'segmentparams' => $this->segmentVariables,
-                'inputparams' => $this->inputVariables,
-                'user' => $this->getUser(),
-            ]
-        ]);
+        if($this->config['ultim8e_url']) {
+            $this->client->request('POST', $this->config['ultim8e_url'], [
+                'headers' => [
+                    'X-Authorization' => $this->config['login_key']
+                ],
+                'form_params' => [
+                    'project' => $this->config['project_key'],
+                    'exception' => $this->exception,
+                    'additional' => $this->additionalData,
+                    'segmentparams' => $this->segmentVariables,
+                    'inputparams' => $this->inputVariables,
+                    'userInfo' => $this->getUser(),
+                ]
+            ]);
+        }
     }
 
     /**

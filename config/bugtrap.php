@@ -14,6 +14,7 @@ return [
      */
     'project_key' => env('BT_PROJECT_KEY'),
 
+    'ultim8e_url' => env('BT_URL'),
     /*
      * Environments where BugTrap should report
      */
