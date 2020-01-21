@@ -22,7 +22,7 @@ class Logger
         $this->config['queue_enabled'] = config('bugtrap.queue.enabled', false);
         $this->config['queue_name'] = config('bugtrap.queue.name', null);
         $this->config['ultim8e_url'] = config('bugtrap.ultim8e_url', null);
-
+        $this->config['ultim8e_url'] = $this->config['ultim8e_url'] . '/api/log';
         $this->exception = $exception;
     }
 
