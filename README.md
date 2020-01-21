@@ -51,15 +51,17 @@ public function render(Exception $e, $request)
 
 ## Usage
 
-All that is left to do is to define 2 ENV configuration variables.
+All that is left to do is to define 3 ENV configuration variables.
 
 ```
 BT_KEY=
 BT_PROJECT_KEY=
+BT_URL=
 ```
 
 `BT_KEY` is your profile key which authorises your account to the API.
 `BT_PROJECT_KEY` is your project API key which you receive when creating a project.
+`BT_PROJECT_KEY` is your base URL of Bugtrap Installation.
 
 Get these variables at [bugtrap.com](https://www.bugtrap.com)
 
